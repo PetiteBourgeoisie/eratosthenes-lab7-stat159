@@ -15,14 +15,17 @@ def sieve_slow(nmax):
         - all_primes: list. List with all the prime numbers slower than nmax
     
     """
-
     all_primes = []
-
-    if nmax == 2: 
-        all_primes = [2]
+    
+    if nmax == 1:
+        return []
+    elif nmax == 2:
+        return [2]
+    elif not isinstance(nmax, int):
+        raise TypeError("input type not supported")
     else:
-        primes_head = [2]
         first = 3
+        primes_head = [2]
         primes_tail = np.arange(first,nmax+1,2)
         while first <= round(math.sqrt(primes_tail[-1])):
             first = primes_tail[0]
